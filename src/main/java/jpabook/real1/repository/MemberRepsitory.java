@@ -1,6 +1,7 @@
 package jpabook.real1.repository;
 
 import jpabook.real1.domain.Member;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -8,10 +9,11 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
+@RequiredArgsConstructor
 public class MemberRepsitory {
 
-    @PersistenceContext //이 어노테이션 사용하면 스프링 부트가 엔티티 매니저 주입
-    private EntityManager em;
+    //@PersistenceContext //이 어노테이션 사용하면 스프링 부트가 엔티티 매니저 주입
+    private final EntityManager em;
 
     public Long save(Member member) {
         em.persist(member);

@@ -2,6 +2,7 @@ package jpabook.real1.service;
 
 import jpabook.real1.domain.Member;
 import jpabook.real1.repository.MemberRepsitory;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,10 +11,10 @@ import java.util.List;
 
 @Service
 @Transactional(readOnly = true) //데이터 변경은 트랜잭션 안에서
+@RequiredArgsConstructor
 public class MemberService {
 
-    @Autowired
-    private MemberRepsitory memberRepsitory;
+    private final MemberRepsitory memberRepsitory;
 
     /**
      * 회원 가입

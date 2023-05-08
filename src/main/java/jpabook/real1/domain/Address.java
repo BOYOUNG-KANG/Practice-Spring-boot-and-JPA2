@@ -1,8 +1,10 @@
 package jpabook.real1.domain;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Embeddable;
+import javax.persistence.Entity;
 
 @Embeddable
 @Getter
@@ -14,7 +16,7 @@ public class Address {
 
     private String zipcode;
 
-    protected Address() {}
+    public Address() {}
 
     public Address(String city, String street, String zipcode) {
         this.city = city;
