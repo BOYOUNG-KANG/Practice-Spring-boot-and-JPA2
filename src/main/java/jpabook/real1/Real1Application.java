@@ -7,11 +7,6 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class Real1Application {
-	@Bean
-	public Address address() {
-		return address();
-	}
-
 
 		public static void main(String[] args) {
 

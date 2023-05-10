@@ -70,7 +70,7 @@ public class Order {
      * 주문 취소
      */
     public void cancel() {
-        if(delivery.getStatus() != DeliveryStatus.CAMP) {
+        if(delivery.getStatus() == DeliveryStatus.CAMP) {
             throw new IllegalStateException("이미 배송 완료된 상품은 취소가 불가능합니다.");
         }
 

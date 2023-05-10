@@ -2,7 +2,6 @@ package jpabook.real1.domain;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.tomcat.jni.Address;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -18,12 +17,9 @@ public class Member {
     private String username;
 
     @Embedded
-    private Address addressz;
+    private Address address;
 
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
 
-    public Address getAddress() {
-        return address;
-    }
 }
