@@ -13,8 +13,8 @@ public class ItemRepository {
     private final EntityManager em;
 
     public void save(Item item){
-        if(item.getId()== null) {
-            em.persist(item); //신규등록
+        if(item.getId() == null) {
+            em.persist(item); //신규 등록
         } else {
             em.merge(item); //이미 등록된 값 가져오기(업데이트)
         }
@@ -28,7 +28,7 @@ public class ItemRepository {
                 .getResultList();
     }
     public List<Item> findByName(String name){
-        return em.createQuery("select  i from Item i where i.name = :name", Item.class)
+        return em.createQuery("select i from Item i where i.name = :name", Item.class)
                 .setParameter("name", name)
                 .getResultList();
     }
