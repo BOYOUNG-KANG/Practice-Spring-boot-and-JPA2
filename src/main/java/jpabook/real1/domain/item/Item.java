@@ -31,7 +31,7 @@ public abstract class Item {
     private List<CategoryItem> categoryItems = new ArrayList<>();
 
     //==비즈니스 로직==//
-    //데이터를 넣고빼는 로직은 데이터를 가지고 있는 클래스에서 하는게 가장 좋음
+    //데이터를 넣고 빼는 로직은 데이터를 가지고 있는 클래스에서 하는게 가장 좋음
     /**
      * 재고 증가
      */
