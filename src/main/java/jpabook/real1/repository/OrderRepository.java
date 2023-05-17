@@ -2,7 +2,6 @@ package jpabook.real1.repository;
 
 import jpabook.real1.domain.Order;
 import lombok.RequiredArgsConstructor;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
@@ -61,10 +60,10 @@ public class OrderRepository {
 
     public List<Order> findAllWithMemberDelivery() {
         return em.createQuery(
-                "select o from Order as o" +
-                        " join fetch o.member as m" +
-                        " join fetch o.delivery as d", Order.class
-        ).getResultList();
+                "select o from Order o" +
+                        " join fetch o.member m"+
+                        " join fetch o.delivery d", Order.class)
+                .getResultList();
     }
 
     public List<Order> findAllWithItem() {
@@ -73,8 +72,8 @@ public class OrderRepository {
                         " join fetch o.member as m" +
                         " join fetch o.delivery as d" +
                         " join fetch o.orderItems as oi" +
-                        " join fetch oi.item as i", Order.class
-        ).getResultList();
+                        " join fetch oi.item as i", Order.class)
+                .getResultList();
     }
 
     public List<Order> findAllWithMemberDelivery(int offset, int limit) {
