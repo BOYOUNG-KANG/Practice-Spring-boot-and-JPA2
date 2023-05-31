@@ -5,12 +5,14 @@ import jpabook.real1.domain.CategoryItem;
 import jpabook.real1.exception.NotEnoughStockException;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.BatchSize;
 
 import javax.persistence.*;
 import javax.print.attribute.standard.MediaSize;
 import java.util.ArrayList;
 import java.util.List;
 
+@BatchSize(size = 1000)
 @Getter @Setter
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
