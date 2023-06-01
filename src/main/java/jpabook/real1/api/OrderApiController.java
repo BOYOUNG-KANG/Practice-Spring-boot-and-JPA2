@@ -4,8 +4,11 @@ import jpabook.real1.domain.Address;
 import jpabook.real1.domain.Order;
 import jpabook.real1.domain.OrderItem;
 import jpabook.real1.domain.OrderStatus;
+import jpabook.real1.dto.queryDto.OrderFlatDto;
+import jpabook.real1.dto.queryDto.OrderQueryDto;
 import jpabook.real1.repository.OrderRepository;
 import jpabook.real1.repository.OrderSearch;
+import jpabook.real1.repository.order.query.OrderQueryRepository;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +23,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class OrderApiController {
     private final OrderRepository orderRepository;
+    private final OrderQueryRepository orderQueryRepository;
 
     @GetMapping("/api/v1/orders")
     public List<Order> ordersV1 (){
@@ -66,6 +70,22 @@ public class OrderApiController {
 
         return collect;
     }
+    @GetMapping("/api/v4/orders")
+    public List<OrderQueryDto> ordersV4() {
+        return orderQueryRepository.findQueryDtos();
+    }
+
+    @GetMapping("/api/v5/orders")
+    public List<OrderQueryDto> ordersV5() {
+        return orderQueryRepository.findAllByDto_optimization();
+    }
+
+    @GetMapping("/api/v6/orders")
+    public List<OrderFlatDto> ordersV6() {
+        return orderQueryRepository.findAllByDto_flat();
+    }
+
+
     @Getter
     static class OrderDto {
         private Long orderId;
