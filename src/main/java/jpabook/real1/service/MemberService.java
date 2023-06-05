@@ -3,7 +3,6 @@ package jpabook.real1.service;
 import jpabook.real1.domain.Member;
 import jpabook.real1.repository.MemberRepsitory;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,7 +14,6 @@ import java.util.List;
 public class MemberService {
 
     private final MemberRepsitory memberRepsitory;
-
     /**
      * 회원 가입
      */
@@ -27,7 +25,7 @@ public class MemberService {
     }
 
     private void validationDuplicateMember(Member member) {
-        List<Member> findMembers = memberRepsitory.findByName(member.getUsername());
+        List<Member> findMembers = memberRepsitory.findByUsername(member.getUsername());
         if (!findMembers.isEmpty()) {
             throw new IllegalStateException("이미 존재하는 회원입니다.");
         }
@@ -39,12 +37,13 @@ public class MemberService {
     }
     public Member findMember(Long id) {
 
-        return memberRepsitory.findOne(id);
+        return memberRepsitory.findById(id).get();
     }
 
     @Transactional
     public void update(Long id, String name) {
-        Member member = memberRepsitory.findOne(id);
+        Member member = memberRepsitory.findById(id).get();
         member.setUsername(name);
     }
+
 }
