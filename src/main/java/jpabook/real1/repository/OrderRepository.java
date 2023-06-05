@@ -54,7 +54,7 @@ public class OrderRepository {
         }
 
         //회원 이름 검색
-        if (StringUtils.hasText(orderSearch.getMemberName())) {ㅇ
+        if (StringUtils.hasText(orderSearch.getMemberName())) {
             Predicate name = cb.like(m.get("name"), "%" + orderSearch.getMemberName() + "%");
             criteria.add(name);
         }
